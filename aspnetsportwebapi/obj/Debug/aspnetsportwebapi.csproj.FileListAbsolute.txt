@@ -59,3 +59,4 @@ c:\users\yw.lim\documents\visual studio 2015\Projects\aspnetsportwebapi\aspnetsp
 c:\users\yw.lim\documents\visual studio 2015\Projects\aspnetsportwebapi\aspnetsportwebapi\bin\System.Web.Http.WebHost.xml
 c:\users\yw.lim\documents\visual studio 2015\Projects\aspnetsportwebapi\aspnetsportwebapi\obj\Debug\aspnetsportwebapi.dll
 c:\users\yw.lim\documents\visual studio 2015\Projects\aspnetsportwebapi\aspnetsportwebapi\obj\Debug\aspnetsportwebapi.pdb
+C:\Users\yw.lim\documents\visual studio 2015\Projects\aspnetsportwebapi\aspnetsportwebapi\obj\Debug\aspnetsportwebapi.csprojResolveAssemblyReference.cache

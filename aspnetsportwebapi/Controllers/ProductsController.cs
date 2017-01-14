@@ -11,11 +11,12 @@ namespace aspnetsportwebapi.Controllers
 {
     public class ProductsController : ApiController
     {
-        // GET: Products
         public ProductsController()
         {
-            Repository = new ProductRepository();
+            Repository = (IRepository)GlobalConfiguration.Configuration.
+                            DependencyResolver.GetService(typeof(IRepository));
         }
+       
         public IEnumerable<Product> GetProducts()
         {
             return Repository.Products;
@@ -26,11 +27,21 @@ namespace aspnetsportwebapi.Controllers
             return result == null
             ? (IHttpActionResult)BadRequest("No Product Found") : Ok(result);
         }
-        public async Task PostProduct(Product product)
+        [Authorize(Roles = "Administrators")]
+        public async Task<IHttpActionResult> PostProduct(Product product)
         {
-            await Repository.SaveProductAsync(product);
+            if (ModelState.IsValid)
+            {
+                await Repository.SaveProductAsync(product);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+            
         }
-
+        [Authorize(Roles ="Administrators")]
         public async Task DeleteProduct(int id)
         {
             await Repository.DeleteProductAsync(id);

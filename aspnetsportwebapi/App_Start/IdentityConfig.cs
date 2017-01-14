@@ -3,6 +3,9 @@ using Owin;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.Cookies;
 using aspnetsportwebapi.Infrastructure.Identity;
+using System;
+using Microsoft.Owin.Security.OAuth;
+
 [assembly: OwinStartup(typeof(aspnetsportwebapi.IdentityConfig))]
 
 namespace aspnetsportwebapi
@@ -17,6 +20,12 @@ namespace aspnetsportwebapi
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie
+            });
+            app.UseOAuthBearerTokens(new OAuthAuthorizationServerOptions
+            {
+                Provider = new StoreAuthProvider(),
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/Authenticate")
             });
         }
     }
